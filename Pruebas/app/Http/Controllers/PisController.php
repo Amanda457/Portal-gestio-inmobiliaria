@@ -13,11 +13,12 @@ class PisController extends Controller
      */
     public function index()
     {
-        //
+        $pisos = Pis::all();
+        return view('pisos.index', compact ('pisos'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource
      */
     public function create()
     {
@@ -32,7 +33,7 @@ class PisController extends Controller
         //
     }
 
-    /**
+    /** 
      * Display the specified resource.
      */
     public function show(Pis $pis)
