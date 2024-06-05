@@ -14,6 +14,7 @@ class PisController extends Controller
     public function index()
     {
         $pisos = Pis::all();
+        echo "hola index pisos";
         return view('pisos.index', compact ('pisos'));
     }
 
@@ -22,7 +23,7 @@ class PisController extends Controller
      */
     public function create()
     {
-        //
+        return view('pisos.create');
     }
 
     /**

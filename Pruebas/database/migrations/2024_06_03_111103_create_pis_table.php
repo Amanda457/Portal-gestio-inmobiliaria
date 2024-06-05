@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('lavabos');
             $table->integer('preu');
             $table->string('tipus_cuina');
+            $table->string('estat');
             $table->text('descripcio');
             $table->boolean('ascensor');
             $table->timestamps();

@@ -18,6 +18,7 @@ class Pis extends Model
         'preu',
         'tipus_cuina',
         'descripcio',
-        'ascensor'
+        'ascensor',
+        'estat'
     ];
 }
