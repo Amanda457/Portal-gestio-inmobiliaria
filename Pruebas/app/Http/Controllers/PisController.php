@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pis;
 use App\Http\Requests\StorePisRequest;
 use App\Http\Requests\UpdatePisRequest;
+use Illuminate\Validation\Rule;
 
 class PisController extends Controller
 {
@@ -31,7 +32,19 @@ class PisController extends Controller
      */
     public function store(StorePisRequest $request)
     {
-        //
+        $request->validate([
+            'nom_referencia' => 'required|string|min:3|max:50',
+            'direccio' => 'required|string|min:3|max:70',
+            'm2' => 'required|integer|between:30,999',
+            'habitacions' => 'required|integer|between: 1,12',
+            'lavabos' => 'required|integer|between: 1,12',
+            'preu' => 'required|integer|between: 300,2000 ',
+            'tipus_cuina' => ['required','string', Rule::in(['Americana', 'Oberta (sense barra/illa)', 'Indepenent'])],
+            'estat' => ['required','string', Rule::in(['Per reformar', 'Per entrar a viure', 'Nou'])],
+            'descripcio' => 'required|string|min:40',
+            'ascensor' => 'required|boolean',                      
+
+        ]);
     }
 
     /** 

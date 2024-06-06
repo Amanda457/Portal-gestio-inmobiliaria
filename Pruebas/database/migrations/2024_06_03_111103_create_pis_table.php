@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('habitacions');
             $table->integer('lavabos');
             $table->integer('preu');
-            $table->string('tipus_cuina');
-            $table->string('estat');
+            $table->enum('tipus_cuina', ['Americana', 'Oberta (sense barra/illa)', 'Indepenent']);
+            $table->enum('estat', ['Per reformar', 'Per entrar a viure', 'Nou']);
             $table->text('descripcio');
             $table->boolean('ascensor');
             $table->timestamps();
