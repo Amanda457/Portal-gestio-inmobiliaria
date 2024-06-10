@@ -15,7 +15,7 @@ class PisController extends Controller
     public function index()
     {
         $pisos = Pis::all();
-        return view('pisos.index', compact ('pisos'));
+        return view('pisos.index', compact('pisos'));
     }
 
     /**
@@ -32,14 +32,7 @@ class PisController extends Controller
     public function store(StorePisRequest $request)
     {
         $data = $request->validated();
-        echo var_dump($data);
-       $piso= Pis::create($data);
-
-       if ($piso) {
-        \Log::info("Piso creado", $piso->toArray());
-    } else {
-        \Log::error("No se pudo crear el piso");
-    }
+        Pis::create($data);
         return redirect()->route('pisos.index');
     }
 
