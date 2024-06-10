@@ -11,6 +11,7 @@ class Pis extends Model
 
     protected $fillable = [
         'nom_referencia',
+        'tipus',
         'direccio',
         'm2',
         'habitacions',

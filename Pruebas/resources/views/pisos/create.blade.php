@@ -9,11 +9,14 @@
 <body>
     <h1>Formulario creació pisos</h1>
 
-    <form method="POST" action="{{ route('pisos.store')}}"  >
+    <form method="POST" action="{{ route('pisos.store') }}"  >
         {{-- Metodo de seguridad --}}
         @csrf
         <label>Nom Referencia</label>
-        <input name = "nom referencia">
+        <input name = "nom_referencia">
+
+        <label>Tipus</label>
+        <input name = "tipus">
 
         <label>Direcció</label>
         <input name = "direccio">
@@ -27,15 +30,15 @@
         <label>Lavabos</label>
         <input name = "lavabos">
 
-
         <label>Tipus de cuina</label>
         <input name = "tipus_cuina">
 
         <label>Descripció</label>
-        <input name = "descripio">
+        <input name = "descripcio">
 
         <label>Té ascensor?</label>
-        <input name = "ascensor">
+        <input name="ascensor" type="checkbox" value="1"> Sí
+        <input name="ascensor" type="hidden" value="0"> No
 
         <label>Estat</label>
         <input name = "estat">

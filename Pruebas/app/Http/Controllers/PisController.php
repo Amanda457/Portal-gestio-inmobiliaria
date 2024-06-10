@@ -15,7 +15,6 @@ class PisController extends Controller
     public function index()
     {
         $pisos = Pis::all();
-        echo "hola index pisos";
         return view('pisos.index', compact ('pisos'));
     }
 
@@ -32,19 +31,16 @@ class PisController extends Controller
      */
     public function store(StorePisRequest $request)
     {
-        $request->validate([
-            'nom_referencia' => 'required|string|min:3|max:50',
-            'direccio' => 'required|string|min:3|max:70',
-            'm2' => 'required|integer|between:30,999',
-            'habitacions' => 'required|integer|between: 1,12',
-            'lavabos' => 'required|integer|between: 1,12',
-            'preu' => 'required|integer|between: 300,2000 ',
-            'tipus_cuina' => ['required','string', Rule::in(['Americana', 'Oberta (sense barra/illa)', 'Indepenent'])],
-            'estat' => ['required','string', Rule::in(['Per reformar', 'Per entrar a viure', 'Nou'])],
-            'descripcio' => 'required|string|min:40',
-            'ascensor' => 'required|boolean',                      
+        $data = $request->validated();
+        echo var_dump($data);
+       $piso= Pis::create($data);
 
-        ]);
+       if ($piso) {
+        \Log::info("Piso creado", $piso->toArray());
+    } else {
+        \Log::error("No se pudo crear el piso");
+    }
+        return redirect()->route('pisos.index');
     }
 
     /** 

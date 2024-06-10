@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pis', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('nom_referencia');
+            $table->enum('tipus', ['Pis', 'Casa']);
             $table->string('direccio');
             $table->integer('m2');
             $table->integer('habitacions');
