@@ -32,6 +32,7 @@ class PisController extends Controller
     public function store(StorePisRequest $request)
     {
         $data = $request->validated();
+        $data['ascensor'] = $request->boolean('ascensor');
         Pis::create($data);
         return redirect()->route('pisos.index');
     }
@@ -47,17 +48,30 @@ class PisController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pis $pis)
+    public function edit(string $id)
     {
-        //
+        $pis = Pis::findOrFail($id);
+        return view('pisos.edit', compact ('pis'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePisRequest $request, Pis $pis)
+    public function update(UpdatePisRequest $request, string $id)
     {
-        //
+        /*$data = $request->validated();
+        $data['ascensor'] = $request->has('ascensor');
+        $pis = Pis::findOrFail($id);
+        $request->has('ascensor');
+        $pis-> update($request->all());
+        return redirect()->route('pisos.index');*/
+
+        $data = $request->validated();
+        $data['ascensor'] = $request->boolean('ascensor');
+    
+        $pis = Pis::findOrFail($id);
+        $pis->update($data);
+        return redirect()->route('pisos.index');
     }
 
     /**
