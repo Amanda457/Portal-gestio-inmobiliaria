@@ -47,17 +47,20 @@ class PisController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pis $pis)
+    public function edit(string $id)
     {
-        //
+        $pis = Pis::findOrFail($id);
+        return view('pisos.edit', compact ('pis'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePisRequest $request, Pis $pis)
+    public function update(UpdatePisRequest $request, string $id)
     {
-        //
+        $pis = Pis::findOrFail($id);
+        $pis-> update($request->all());
+        return redirect()->route('pisos.index');
     }
 
     /**

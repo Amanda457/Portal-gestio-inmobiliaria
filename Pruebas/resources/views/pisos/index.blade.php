@@ -25,6 +25,7 @@
                 <th class="px-4 py-2 text-gray-900 dark:text-white text-center">Ascensor</th>
                 <th class="px-4 py-2 text-gray-900 dark:text-white text-center">Estat</th>
                 <th class="px-4 py-2 text-gray-900 dark:text-white text-center">Preu</th>
+                <th class="px-4 py-2 text-gray-900 dark:text-white text-center">Accions</th>
 
             </tr>
         </thead>
@@ -43,9 +44,14 @@
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $pis->ascensor }}</td>
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $pis->estat }}</td>
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $pis->preu }}</td>
-        
+                <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">
+                    <a href="{{ route('pisos.edit', $pis->id) }}">Editar</a>
+                </td>
+                
+                
             </tr>
             @endforeach
+            
         </tbody>
     </table>
 
