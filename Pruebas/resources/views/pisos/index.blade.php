@@ -46,6 +46,7 @@
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $pis->preu }}</td>
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">
                     <a href="{{ route('pisos.edit', $pis->id) }}">Editar</a>
+                    <button type = "button" onclick="confirmDelete('{{$pis->id}}')">Destroy</button>
                 </td>
                 
                 

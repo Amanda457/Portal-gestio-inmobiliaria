@@ -59,13 +59,6 @@ class PisController extends Controller
      */
     public function update(UpdatePisRequest $request, string $id)
     {
-        /*$data = $request->validated();
-        $data['ascensor'] = $request->has('ascensor');
-        $pis = Pis::findOrFail($id);
-        $request->has('ascensor');
-        $pis-> update($request->all());
-        return redirect()->route('pisos.index');*/
-
         $data = $request->validated();
         $data['ascensor'] = $request->boolean('ascensor');
     
