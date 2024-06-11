@@ -32,6 +32,7 @@ class PisController extends Controller
     public function store(StorePisRequest $request)
     {
         $data = $request->validated();
+        $data['ascensor'] = $request->boolean('ascensor');
         Pis::create($data);
         return redirect()->route('pisos.index');
     }
@@ -58,8 +59,18 @@ class PisController extends Controller
      */
     public function update(UpdatePisRequest $request, string $id)
     {
+        /*$data = $request->validated();
+        $data['ascensor'] = $request->has('ascensor');
         $pis = Pis::findOrFail($id);
+        $request->has('ascensor');
         $pis-> update($request->all());
+        return redirect()->route('pisos.index');*/
+
+        $data = $request->validated();
+        $data['ascensor'] = $request->boolean('ascensor');
+    
+        $pis = Pis::findOrFail($id);
+        $pis->update($data);
         return redirect()->route('pisos.index');
     }
 

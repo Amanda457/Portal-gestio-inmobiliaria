@@ -63,8 +63,8 @@
         @enderror
     
         <label>Té ascensor?</label>
-        <input name="ascensor" type="checkbox" value="1" {{ old('ascensor', $pis->ascensor) ? 'checked' : '' }}> Sí
         <input name="ascensor" type="hidden" value="0">
+        <input name="ascensor" type="checkbox" value="1" {{ old('ascensor', $pis->ascensor) ? 'checked' : '' }}> Sí
         @error('ascensor')
         <p>{{ $message }}</p>
         @enderror
