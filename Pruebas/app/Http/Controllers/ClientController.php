@@ -22,12 +22,11 @@ class ClientController extends Controller
 
     public function store(StoreClientRequest $request)
     {
-        
+        $data = $request->validated();
+        Client::create($data);
+        return redirect()->route('clients.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Client $client)
     {
         //
