@@ -59,13 +59,6 @@ class PisController extends Controller
      */
     public function update(UpdatePisRequest $request, string $id)
     {
-        /*$data = $request->validated();
-        $data['ascensor'] = $request->has('ascensor');
-        $pis = Pis::findOrFail($id);
-        $request->has('ascensor');
-        $pis-> update($request->all());
-        return redirect()->route('pisos.index');*/
-
         $data = $request->validated();
         $data['ascensor'] = $request->boolean('ascensor');
     
@@ -77,8 +70,10 @@ class PisController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pis $pis)
+    public function destroy(string $id)
     {
-        //
+        $pis = Pis::findOrFail($id);
+        $pis->delete();
+        return redirect()->route('pisos.index');
     }
 }

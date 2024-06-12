@@ -46,6 +46,11 @@
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $pis->preu }}</td>
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">
                     <a href="{{ route('pisos.edit', $pis->id) }}">Editar</a>
+                    <form action="{{ route('pisos.destroy', $pis->id) }}" method="POST" onclick="return confirm('Estàs segur que vols eliminar aquest pis?');">
+                      @csrf
+                      @method("DELETE")
+                    <button type = "submit">Eliminar</button>
+                    </form>
                 </td>
                 
                 
