@@ -70,8 +70,10 @@ class PisController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pis $pis)
+    public function destroy(string $id)
     {
-        //
+        $pis = Pis::findOrFail($id);
+        $pis->delete();
+        return redirect()->route('pisos.index');
     }
 }
