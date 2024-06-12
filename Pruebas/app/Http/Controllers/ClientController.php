@@ -15,25 +15,18 @@ class ClientController extends Controller
         return view('clients.index', compact('clients'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreClientRequest $request)
     {
-        //
+        $data = $request->validated();
+        Client::create($data);
+        return redirect()->route('clients.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Client $client)
     {
         //

@@ -1,4 +1,3 @@
-<!-- resources/views/clients/index.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,9 @@
     <title>Index Clients</title>
 </head>
 <body>
-    
+    <div>
+        <a href="{{ route('clients.create') }}"><h1>Create</h1></a>
+    </div>
     <table class="table-auto w-full">
         <thead>
             <tr>
