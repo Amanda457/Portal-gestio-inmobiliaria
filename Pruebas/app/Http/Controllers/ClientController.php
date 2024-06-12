@@ -8,12 +8,11 @@ use App\Http\Requests\UpdateClientRequest;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
+        $clients = Client::all();
+        return view('clients.index', compact('clients'));
     }
 
     /**
