@@ -22,9 +22,9 @@ class StoreClientRequest extends FormRequest
         return [
             'nom' => 'required|string|min:2',
             'cognom' => 'required|string|min:2',
-            'telefon' => 'required|int|min:9|max:11',
+            'telefon' => 'required|int|digits_between:9,11',
             'data_naixement' => 'required|date',
-            'email' => 'required|email|max:70|unique:client,email',
+            'email' => 'required|email|max:70|unique:clients,email',
         ];
     }
 }
