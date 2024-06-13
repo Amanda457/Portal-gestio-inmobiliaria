@@ -32,20 +32,19 @@ class ClientController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Client $client)
+    public function edit(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return view('clients.edit', compact ('client'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateClientRequest $request, Client $client)
+   
+    public function update(UpdateClientRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        $client = Client::findOrFail($id);
+        $client->update($data);
+        return redirect()->route('clients.index');
     }
 
     /**
