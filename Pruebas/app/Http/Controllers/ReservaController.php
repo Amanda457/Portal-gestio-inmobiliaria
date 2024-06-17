@@ -8,28 +8,25 @@ use App\Http\Requests\UpdateReservaRequest;
 
 class ReservaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
+        $reservas = Reserva::all();
+        return view('reservas.index', compact('reservas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('reservas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(StoreReservaRequest $request)
     {
-        //
+        $data = $request->validated();
+        Reserva::create($data);
+        return redirect()->route('reservas.index');
     }
 
     /**
