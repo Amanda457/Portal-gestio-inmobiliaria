@@ -31,6 +31,9 @@
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $client->telefon}}</td>
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $client->data_naixement }}</td>
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $client->email }}</td>
+                <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">
+                <a href="{{ route('clients.edit', $client->id) }}">Editar</a>
+            
                 </tr>
             @endforeach
                 
