@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Reserva extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'client_id',
+        'pis_id',
+        'data_reserva',
+        'estat',
+    ];
+
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+    public function pis()
+    {
+        return $this->belongsTo(Pis::class);
+    }
 }

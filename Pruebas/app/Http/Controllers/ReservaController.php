@@ -6,7 +6,7 @@ use App\Models\Reserva;
 use App\Http\Requests\StoreReservaRequest;
 use App\Http\Requests\UpdateReservaRequest;
 use App\Models\Client;
-//use App\Models\Pis;
+use App\Models\Pis;
 
 class ReservaController extends Controller
 {
@@ -14,6 +14,7 @@ class ReservaController extends Controller
     public function index()
     {
         $reservas = Reserva::all();
+        //dd($reservas);
         return view('reservas.index', compact('reservas'));
     }
 
@@ -21,16 +22,20 @@ class ReservaController extends Controller
     public function create()
     {
         $clients = Client::all();
-        //$pisos = Pis::all();
+        $pisos = Pis::all();
 
-        return view('reservas.create', ['clients' => $clients]);
-        //['pisos' => $pisos] Añadir cuando funcionen rutas
+        return view('reservas.create', ['clients' => $clients], ['pisos' => $pisos] );
+    
     }
 
     
     public function store(StoreReservaRequest $request)
     {
         $data = $request->validated();
+        $data['client_id'] = $request->input('client_id');
+        $data['pis_id'] = $request->input('pis_id');
+        $data['data_reserva'] = now();
+        $data['estat'] = 'Per revisar';
         Reserva::create($data);
         return redirect()->route('reservas.index');
     }

@@ -17,12 +17,15 @@
             <select name="client_id" id="client_id" class="form-control" value="{{ old('client_id') }}">
                 <option value="">Seleccionar Client</option>
                 @foreach($clients as $client)
-                    <option value="{{ $client->id }}">{{ $client->nom }}</option>
+                    <option value="{{ $client->id }}">{{ $client->nom }} {{ $client->cognom }}</option>
                 @endforeach
             </select>
+            @error('client_id')
+            <p>{{ $message }}</p>
+            @enderror
         </div>
     
-        {{-- <div class="form-group">
+         <div class="form-group">
             <label for="pis_id">Seleccionar Pis:</label>
             <select name="pis_id" id="pis_id" class="form-control" value="{{ old('pis_id') }}">
                 <option value="">Seleccionar Pis</option>
@@ -30,34 +33,29 @@
                     <option value="{{ $pis->id }}">{{ $pis->nom_referencia }}</option>
                 @endforeach
             </select>
-        </div> --}}
+            @error('pis_id')
+            <p>{{ $message }}</p>
+            @enderror
+        </div> 
 
-        <label>Cognom</label>
-        <input name="cognom" value="{{ old('cognom') }}">
-        @error('cognom')
-        <p>{{ $message }}</p>
-        @enderror
-    
-        <label>Telèfon</label>
-        <input name="telefon" value="{{ old('telefon') }}">
-        @error('telefon')
-        <p>{{ $message }}</p>
-        @enderror
-    
-        <label>Data de naixement</label>
-        <input name="data_naixement" value="{{ old('data_naixement') }}">
-        @error('data_naixement')
-        <p>{{ $message }}</p>
-        @enderror
-    
-        <label>Correu electrònic</label>
-        <input name="email" value="{{ old('email') }}">
-        @error('email')
+        <label>Data de Reserva</label>
+        <input type="text" value="{{ now()->toDateTimeString() }}" readonly>
+       
+        
+        <label>Estat</label>
+        <select name="estat" disabled>
+            <option value="Per revisar" selected>Per revisar</option>
+            <option value="Aprovada">Aprovada</option>
+            <option value="Rebutjada">Rebutjada</option>
+        </select>
+        <input type="hidden" name="estat" value="Per revisar">
+        @error('estat')
         <p>{{ $message }}</p>
         @enderror
         
+        
         <button type="submit">Guardar</button>
-        <a href="{{ route('clients.index') }}">Cancelar</a>
+        <a href="{{ route('reservas.index') }}">Cancelar</a>
       </form>
     
 </body>
