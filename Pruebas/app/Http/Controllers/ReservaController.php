@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Reserva;
 use App\Http\Requests\StoreReservaRequest;
 use App\Http\Requests\UpdateReservaRequest;
+use App\Models\Client;
+//use App\Models\Pis;
 
 class ReservaController extends Controller
 {
@@ -18,7 +20,11 @@ class ReservaController extends Controller
 
     public function create()
     {
-        return view('reservas.create');
+        $clients = Client::all();
+        //$pisos = Pis::all();
+
+        return view('reservas.create', ['clients' => $clients]);
+        //['pisos' => $pisos] Añadir cuando funcionen rutas
     }
 
     
