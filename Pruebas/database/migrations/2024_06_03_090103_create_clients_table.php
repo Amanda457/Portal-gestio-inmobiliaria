@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('cognom');
             $table->integer('telefon');
             $table->date('data_naixement');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }
