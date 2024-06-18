@@ -31,7 +31,8 @@
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $reserva->data_reserva }}</td>
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $reserva->data_fi_gestio }}</td>
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $reserva->estat }}</td>
-                
+                <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">
+                <a href="{{ route('reservas.edit', $reserva->id) }}">Editar</a>
                 </tr>
             @endforeach
                 
