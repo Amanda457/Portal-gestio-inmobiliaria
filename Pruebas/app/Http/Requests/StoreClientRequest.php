@@ -6,12 +6,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreClientRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +20,11 @@ class StoreClientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nom' => 'required|string|min:2',
+            'cognom' => 'required|string|min:2',
+            'telefon' => 'required|int|digits_between:9,11',
+            'data_naixement' => 'required|date',
+            'email' => 'required|email|max:70|unique:clients,email',
         ];
     }
 }
