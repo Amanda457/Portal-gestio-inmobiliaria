@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\PisController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,3 +14,8 @@ Route::get('/test', function () {
 });
 
 Route::resource('clients', ClientController::class);
+Route::resource('pisos', PisController::class);
+//Route::get('/pisos/index', [PisController::class, 'index']);
+//No funcionan bien las rutas de pisos
+
+?>
