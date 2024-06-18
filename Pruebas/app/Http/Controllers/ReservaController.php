@@ -5,31 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\Reserva;
 use App\Http\Requests\StoreReservaRequest;
 use App\Http\Requests\UpdateReservaRequest;
+use App\Models\Client;
+use App\Models\Pis;
 
 class ReservaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
+        $reservas = Reserva::all();
+        //dd($reservas);
+        return view('reservas.index', compact('reservas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        $clients = Client::all();
+        $pisos = Pis::all();
+
+        return view('reservas.create', ['clients' => $clients], ['pisos' => $pisos] );
+    
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(StoreReservaRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['client_id'] = $request->input('client_id');
+        $data['pis_id'] = $request->input('pis_id');
+        $data['data_reserva'] = now();
+        $data['estat'] = 'Per revisar';
+        Reserva::create($data);
+        return redirect()->route('reservas.index');
     }
 
     /**
