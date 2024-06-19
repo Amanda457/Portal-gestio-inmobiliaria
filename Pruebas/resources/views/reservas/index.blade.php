@@ -33,7 +33,12 @@
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">{{ $reserva->estat }}</td>
                 <td class="border px-4 py-2 text-gray-900 dark:text-white text-center">
                 <a href="{{ route('reservas.edit', $reserva->id) }}">Editar</a>
-                </tr>
+               <form action="{{ route('reservas.destroy', $reserva->id) }}" method="POST" onclick="return confirm('Estàs segur que vols eliminar aquesta reserva?');">
+                    @csrf
+                    @method("DELETE")
+                  <button type = "submit">Eliminar</button>
+                  </form>
+            </tr>
             @endforeach
                 
          </tbody>
