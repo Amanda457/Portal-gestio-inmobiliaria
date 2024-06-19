@@ -10,7 +10,7 @@ use App\Models\Pis;
 
 class ReservaController extends Controller
 {
-    
+
     public function index()
     {
         $reservas = Reserva::all();
@@ -24,11 +24,10 @@ class ReservaController extends Controller
         $clients = Client::all();
         $pisos = Pis::all();
 
-        return view('reservas.create', ['clients' => $clients], ['pisos' => $pisos] );
-    
+        return view('reservas.create', ['clients' => $clients], ['pisos' => $pisos]);
     }
 
-    
+
     public function store(StoreReservaRequest $request)
     {
         $data = $request->validated();
@@ -40,33 +39,35 @@ class ReservaController extends Controller
         return redirect()->route('reservas.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Reserva $reserva)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Reserva $reserva)
+    public function edit(string $id)
     {
-        //
+        $clients = Client::all();
+        $pisos = Pis::all();
+        $reserva = Reserva::findOrFail($id);
+        return view('reservas.edit', compact('reserva', 'clients', 'pisos'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateReservaRequest $request, Reserva $reserva)
+    public function update(UpdateReservaRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        $reserva = Reserva::findOrFail($id);
+        
+        if (in_array($data['estat'], ['Aprovada', 'Rebutjada'])) {
+            $data['data_fi_gestio'] = now();
+        } else {
+            $data['data_fi_gestio'] = null;
+        }
+
+        $reserva->update($data);
+        return redirect()->route('reservas.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Reserva $reserva)
     {
         //
