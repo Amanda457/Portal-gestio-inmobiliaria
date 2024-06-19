@@ -68,8 +68,10 @@ class ReservaController extends Controller
         return redirect()->route('reservas.index');
     }
 
-    public function destroy(Reserva $reserva)
+    public function destroy(string $id)
     {
-        //
+        $reserva = Reserva::findOrFail($id);
+        $reserva->delete();
+        return redirect()->route('reservas.index');
     }
 }
