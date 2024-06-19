@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('pis_id')->constrained('pisos');
             $table->timestamp('data_reserva')->default(now());
             $table->enum('estat', ['Per revisar', 'Aprovada', 'Rebutjada'])->default('Per revisar');
-            $table->date('data_fi_gestio')->nullable();
+            $table->timestamp('data_fi_gestio')->nullable();
             $table->timestamps();
         });
     }

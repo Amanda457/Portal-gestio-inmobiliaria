@@ -14,6 +14,7 @@ class Reserva extends Model
         'pis_id',
         'data_reserva',
         'estat',
+        'data_fi_gestio'
     ];
 
 
