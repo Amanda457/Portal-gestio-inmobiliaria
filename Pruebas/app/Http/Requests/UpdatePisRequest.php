@@ -25,6 +25,7 @@ class UpdatePisRequest extends FormRequest
             'nom_referencia' => 'required|string|min:3|max:50',
             'tipus' => ['required', 'string', 'in:Pis,Casa'],
             'direccio' => 'required|string|min:3|max:70',
+            'poblacio' => 'required|string|min:3|max:30',
             'm2' => 'required|integer|between:30,999',
             'habitacions' => 'required|integer|between:1,12',
             'lavabos' => 'required|integer|between:1,12',
