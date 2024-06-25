@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained('clients');
-            $table->foreignId('pis_id')->constrained('pisos');
+            $table->foreignId('client_id')->constrained('clients')->cascadeOnDelete();
+            $table->foreignId('pis_id')->constrained('pisos')->cascadeOnDelete();
             $table->timestamp('data_reserva')->default(now());
             $table->enum('estat', ['Per revisar', 'Aprovada', 'Rebutjada'])->default('Per revisar');
             $table->timestamp('data_fi_gestio')->nullable();
