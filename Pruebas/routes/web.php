@@ -6,12 +6,11 @@ use App\Http\Controllers\PisController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/inici');
 });
 
-
-Route::get('/test', function () {
-    return "Testeando hello";
+Route::get('/inici', function () {
+    return view('inici');
 });
 
 Route::resource('clients', ClientController::class);
