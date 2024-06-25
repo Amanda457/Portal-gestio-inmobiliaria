@@ -11,9 +11,7 @@ use App\Models\Reserva;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
+
     public function run(): void
     {
         Pis::factory()->count(10)->create();

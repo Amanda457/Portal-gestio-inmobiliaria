@@ -9,6 +9,7 @@ class Pis extends Model
 {
     use HasFactory;
 
+    protected $table = 'pisos';
     protected $fillable = [
         'nom_referencia',
         'tipus',
