@@ -1,49 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear client</title>
-</head>
-<body>
-    <h1>Formulari client nou</h1>
+<x-layout>
+    <x-slot name="title">
+        Nou client
+      </x-slot>
 
-    <form method="POST" action="{{ route('clients.store') }}">
-        {{-- Metodo de seguridad --}}
-        @csrf
-        <label>Nom </label>
-        <input name="nom" value="{{ old('nom') }}">
-        @error('nom')
-        <p>{{ $message }}</p>
-        @enderror
-    
-        <label>Cognom</label>
-        <input name="cognom" value="{{ old('cognom') }}">
-        @error('cognom')
-        <p>{{ $message }}</p>
-        @enderror
-    
-        <label>Telèfon</label>
-        <input name="telefon" value="{{ old('telefon') }}">
-        @error('telefon')
-        <p>{{ $message }}</p>
-        @enderror
-    
-        <label>Data de naixement</label>
-        <input name="data_naixement" value="{{ old('data_naixement') }}">
-        @error('data_naixement')
-        <p>{{ $message }}</p>
-        @enderror
-    
-        <label>Correu electrònic</label>
-        <input name="email" value="{{ old('email') }}">
-        @error('email')
-        <p>{{ $message }}</p>
-        @enderror
-        
-        <button type="submit">Guardar</button>
-        <a href="{{ route('clients.index') }}">Cancelar</a>
-      </form>
-    
-</body>
-</html>
+<div class="bg-green-100 py-32 px-10 min-h-screen">
+    <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto shadow-xl">
+        <form method="POST" action="{{ route('clients.store') }}">
+            {{-- Método de seguridad --}}
+            @csrf
+
+            <div class="flex items-center mb-5">
+                <label for="nom" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Nom:</label>
+                <input type="text" id="nom" name="nom" value="{{ old('nom') }}" placeholder="Introdueix el nom" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+            </div>
+            @error('nom')
+            <p class="text-red-500 text-sm">{{ $message }}</p>
+            @enderror
+
+            <div class="flex items-center mb-5">
+                <label for="cognom" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Cognom:</label>
+                <input type="text" id="cognom" name="cognom" value="{{ old('cognom') }}"  placeholder="Introdueix el cognom" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+            </div>
+            @error('cognom')
+            <p class="text-red-500 text-sm">{{ $message }}</p>
+            @enderror
+
+            <div class="flex items-center mb-5">
+                <label for="telefon" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Telèfon:</label>
+                <input type="text" id="telefon" name="telefon" value="{{ old('telefon') }}" placeholder="Número de telèfon" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+            </div>
+            @error('telefon')
+            <p class="text-red-500 text-sm">{{ $message }}</p>
+            @enderror
+
+            <div class="flex items-center mb-5">
+                <label for="data_naixement" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Data de naixement:</label>
+                <input type="text" id="data_naixement" name="data_naixement" value="{{ old('data_naixement') }}" placeholder="Format (AAAA/MM/DD)" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+            </div>
+            @error('data_naixement')
+            <p class="text-red-500 text-sm">{{ $message }}</p>
+            @enderror
+
+            <div class="flex items-center mb-5">
+                <label for="email" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Correu electrònic:</label>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Introdueix el correu electrònic" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+            </div>
+            @error('email')
+            <p class="text-red-500 text-sm">{{ $message }}</p>
+            @enderror
+
+            <div class="text-right">
+                <button type="submit" class="py-3 px-8 bg-green-700 text-white font-bold rounded-full hover:bg-green-500 transition duration-300">Guardar</button>
+                <a href="{{ route('clients.index') }}" class="ml-4 py-3 px-8 bg-gray-400 text-white font-bold rounded-full hover:bg-gray-500 transition duration-300">Cancelar</a>
+              </div>
+        </form>
+    </div>
+</div>
+</x-layout>

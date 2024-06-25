@@ -13,6 +13,7 @@ class Pis extends Model
         'nom_referencia',
         'tipus',
         'direccio',
+        'poblacio',
         'm2',
         'habitacions',
         'lavabos',

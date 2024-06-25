@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nom_referencia');
             $table->enum('tipus', ['Pis', 'Casa']);
             $table->string('direccio');
+            $table->string('poblacio');
             $table->integer('m2');
             $table->integer('habitacions');
             $table->integer('lavabos');

@@ -1,87 +1,132 @@
-<!-- resources/views/pisos/index.blade.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Pisos</title>
-</head>
-<body>
-    <h1>Formulario creació pisos</h1>
+<x-layout>
+    <x-slot name="title">
+        Nou inmoble
+      </x-slot>
 
-    <form method="POST" action="{{ route('pisos.store') }}">
+<div class="bg-green-100 py-32 px-10 min-h-screen">
+
+    <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto shadow-xl">
+      <form method="POST" action="{{ route('pisos.store') }}">
         {{-- Metodo de seguridad --}}
         @csrf
-        <label>Nom Referencia</label>
-        <input name="nom_referencia" value="{{ old('nom_referencia') }}">
+  
+        <div class="flex items-center mb-5">
+          <label for="nom_referencia" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Nom Referencia:</label>
+          <input type="text" id="nom_referencia" name="nom_referencia" value="{{ old('nom_referencia') }}" placeholder="Fes esmena de les característiques més rellevants" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+        </div>
         @error('nom_referencia')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>Tipus</label>
-        <input name="tipus" value="{{ old('tipus') }}">
+  
+        <div class="flex items-center mb-5">
+          <label for="tipus" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Tipus:</label>
+          <select id="tipus" name="tipus" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+            <option value="">Seleccionar Tipus</option>
+            <option value="Pis" {{ old('tipus') == 'Pis' ? 'selected' : '' }}>Pis</option>
+            <option value="Casa" {{ old('tipus') == 'Casa' ? 'selected' : '' }}>Casa</option>
+          </select>
+        </div>
         @error('tipus')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>Direcció</label>
-        <input name="direccio" value="{{ old('direccio') }}">
+
+        <div class="flex items-center mb-5">
+          <label for="direccio" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Direcció:</label>
+          <input type="text" id="direccio" name="direccio" value="{{ old('direccio') }}" placeholder="Introdueix la direcció completa" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+        </div>
         @error('direccio')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>M2</label>
-        <input name="m2" value="{{ old('m2') }}">
+
+         <div class="flex items-center mb-5">
+            <label for="poblacio" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Població:</label>
+            <input type="text" id="poblacio" name="poblacio" value="{{ old('poblacio') }}" placeholder="Introdueix la població" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+          </div>
+          @error('poblacio')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+          @enderror
+
+        <div class="flex items-center mb-5">
+          <label for="m2" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">M2:</label>
+          <input type="text" id="m2" name="m2" value="{{ old('m2') }}" placeholder="Introdueix únicament el número" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+        </div>
         @error('m2')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>Habitacions</label>
-        <input name="habitacions" value="{{ old('habitacions') }}">
+  
+        <div class="flex items-center mb-5">
+          <label for="habitacions" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Habitacions:</label>
+          <input type="text" id="habitacions" name="habitacions" value="{{ old('habitacions') }}" placeholder="Número d'habitacions" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+        </div>
         @error('habitacions')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>Lavabos</label>
-        <input name="lavabos" value="{{ old('lavabos') }}">
+
+        <div class="flex items-center mb-5">
+          <label for="lavabos" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Lavabos:</label>
+          <input type="text" id="lavabos" name="lavabos" value="{{ old('lavabos') }}" placeholder="Número de lavabos" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+        </div>
         @error('lavabos')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>Tipus de cuina</label>
-        <input name="tipus_cuina" value="{{ old('tipus_cuina') }}">
+  
+        <div class="flex items-center mb-5">
+          <label for="tipus_cuina" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Tipus de cuina:</label>
+          <select id="tipus_cuina" name="tipus_cuina" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+            <option value="">Seleccionar Tipus de cuina</option>
+            <option value="Americana" {{ old('tipus_cuina') == 'Americana' ? 'selected' : '' }}>Americana</option>
+            <option value="Oberta (sense barra/illa)" {{ old('tipus_cuina') == 'Oberta (sense barra/illa)' ? 'selected' : '' }}>Oberta (sense barra/illa)</option>
+            <option value="Independent" {{ old('tipus_cuina') == 'Independent' ? 'selected' : '' }}>Independent</option>
+          </select>
+        </div>
         @error('tipus_cuina')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>Descripció</label>
-        <input name="descripcio" value="{{ old('descripcio') }}">
+
+        <div class="flex items-center mb-5">
+          <label for="descripcio" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Descripció:</label>
+          <input type="text" id="descripcio" name="descripcio" value="{{ old('descripcio') }}" placeholder="Per a que es puguin fer una idea de l'inmoble" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+        </div>
         @error('descripcio')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>Té ascensor?</label>
-        <input name="ascensor" type="hidden" value="0">
-        <input name="ascensor" type="checkbox" value="1" {{ old('ascensor') ? 'checked' : '' }}> Sí
+  
+        <div class="flex items-center mb-5">
+          <label for="ascensor" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Té ascensor?</label>
+          <input type="hidden" name="ascensor" value="0">
+          <input type="checkbox" id="ascensor" name="ascensor" value="1" {{ old('ascensor') ? 'checked' : '' }} class="form-checkbox h-5 w-5 text-green-400">
+          <span class="ml-2">Sí</span>
+        </div>
         @error('ascensor')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>Estat</label>
-        <input name="estat" value="{{ old('estat') }}">
+  
+        <div class="flex items-center mb-5">
+          <label for="estat" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Estat:</label>
+          <select id="estat" name="estat" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+            <option value="">Seleccionar Estat</option>
+            <option value="Per reformar" {{ old('estat') == 'Per reformar' ? 'selected' : '' }}>Per reformar</option>
+            <option value="Per entrar a viure" {{ old('estat') == 'Per entrar a viure' ? 'selected' : '' }}>Per entrar a viure</option>
+            <option value="Nou" {{ old('estat') == 'Nou' ? 'selected' : '' }}>Nou</option>
+          </select>
+        </div>
         @error('estat')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <label>Preu</label>
-        <input name="preu" value="{{ old('preu') }}">
+
+        <div class="flex items-center mb-5">
+          <label for="preu" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Preu:</label>
+          <input type="text" id="preu" name="preu" value="{{ old('preu') }}" placeholder="Introdueix el preu del lloguer" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+        </div>
         @error('preu')
-        <p>{{ $message }}</p>
+        <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
-    
-        <button type="submit">Guardar</button>
-        <a href="{{ route('pisos.index') }}">Cancelar</a>
+  
+        <div class="text-right">
+            <button type="submit" class="py-3 px-8 bg-green-700 text-white font-bold rounded-full hover:bg-green-500 transition duration-300">Registrar</button>
+            <a href="{{ route('pisos.index') }}" class="ml-4 py-3 px-8 bg-gray-400 text-white font-bold rounded-full hover:bg-gray-500 transition duration-300">Cancelar</a>
+          </div>
       </form>
-    
-</body>
-</html>
+    </div>
+  </div>
+</x-layout>
