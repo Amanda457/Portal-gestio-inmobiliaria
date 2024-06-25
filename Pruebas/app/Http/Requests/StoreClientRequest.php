@@ -23,7 +23,7 @@ class StoreClientRequest extends FormRequest
             'nom' => 'required|string|min:2',
             'cognom' => 'required|string|min:2',
             'telefon' => 'required|int|digits_between:9,11',
-            'data_naixement' => 'required|date',
+            'data_naixement' => 'required|date_format:d-m-Y|after_or_equal:01-01-2006',
             'email' => 'required|email|max:70|unique:clients,email',
         ];
     }
