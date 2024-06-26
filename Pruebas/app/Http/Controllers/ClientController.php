@@ -5,62 +5,58 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
+use Carbon\Carbon;
+
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
+        $clients = Client::all();
+        foreach ($clients as $client) {
+            $client->data_naixement = Carbon::parse($client->data_naixement)->format('d-m-Y');
+        }
+        return view('clients.index', compact('clients'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreClientRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['data_naixement'] = Carbon::createFromFormat('d-m-Y', $data['data_naixement'])->format('Y-m-d');
+        Client::create($data);
+        return redirect()->route('clients.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Client $client)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Client $client)
+    public function edit(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return view('clients.edit', compact ('client'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateClientRequest $request, Client $client)
+    public function update(UpdateClientRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        $data['data_naixement'] = Carbon::createFromFormat('d-m-Y', $data['data_naixement'])->format('Y-m-d');
+        $client = Client::findOrFail($id);
+        $client->update($data);
+        return redirect()->route('clients.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Client $client)
+    public function destroy(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->delete();
+        return redirect()->route('clients.index');
     }
 }

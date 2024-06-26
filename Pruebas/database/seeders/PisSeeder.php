@@ -4,15 +4,13 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Client;
+use App\Models\Pis;
 
-class ClientSeeder extends Seeder
+class PisSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    
     public function run(): void
     {
-        Client::factory()->count(10)->create();
+        Pis::factory()->count(10)->create();
     }
 }

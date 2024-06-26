@@ -3,15 +3,14 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateClientRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+    
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +21,16 @@ class UpdateClientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nom' => 'required|string|min:2',
+            'cognom' => 'required|string|min:2',
+            'telefon' => 'required|int|digits_between:9,11',
+            'data_naixement' => 'required|date_format:d-m-Y|before_or_equal:01-01-2006',
+            'email' => [
+                'required', 
+                'email', 
+                'max:70', 
+                Rule::unique('clients')->ignore($this->route('client')),
+            ],
         ];
     }
 }

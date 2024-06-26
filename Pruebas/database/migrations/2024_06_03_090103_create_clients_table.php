@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('clients', function (Blueprint $table) {
@@ -17,14 +15,11 @@ return new class extends Migration
             $table->string('cognom');
             $table->integer('telefon');
             $table->date('data_naixement');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('clients');
