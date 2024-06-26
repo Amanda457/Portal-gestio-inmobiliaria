@@ -9,13 +9,13 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-green-100 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                        <th class="px-4 py-2 text-center">ID</th>
-                        <th class="px-4 py-2 text-center">Client</th>
-                        <th class="px-4 py-2 text-center">Pis</th>
-                        <th class="px-4 py-2 text-center">Data de la reserva</th>
-                        <th class="px-4 py-2 text-center">Data fi gestió</th>
-                        <th class="px-4 py-2 text-center">Estat</th>
-                        <th class="px-4 py-2 text-center">Accions</th>
+                    <th class="px-4 py-2 text-center">ID</th>
+                    <th class="px-4 py-2 text-center">Client</th>
+                    <th class="px-4 py-2 text-center">Pis</th>
+                    <th class="px-4 py-2 text-center">Data de la reserva</th>
+                    <th class="px-4 py-2 text-center">Data fi gestió</th>
+                    <th class="px-4 py-2 text-center">Estat</th>
+                    <th class="px-4 py-2 text-center">Accions</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,4 +41,3 @@
         </table>
     </div>
 </x-layout>
-    
