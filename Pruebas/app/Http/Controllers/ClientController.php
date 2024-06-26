@@ -44,10 +44,10 @@ class ClientController extends Controller
         return view('clients.edit', compact ('client'));
     }
 
-   
     public function update(UpdateClientRequest $request, string $id)
     {
         $data = $request->validated();
+        $data['data_naixement'] = Carbon::createFromFormat('d-m-Y', $data['data_naixement'])->format('Y-m-d');
         $client = Client::findOrFail($id);
         $client->update($data);
         return redirect()->route('clients.index');
