@@ -1,22 +1,21 @@
 <x-layout>
     <x-slot name="title">
         Nova reserva
-      </x-slot>
-<div class="bg-green-100 py-32 px-10 min-h-screen">
-
+    </x-slot>
+  <div class="bg-green-100 py-32 px-10 min-h-screen">
     <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto shadow-xl">
       <form method="POST" action="{{ route('reservas.store') }}">
         @csrf
 
-        <div class="flex items-center mb-5">
-          <label for="client_id" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Seleccionar Client:</label>
-          <select name="client_id" id="client_id" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
+          <div class="flex items-center mb-5">
+            <label for="client_id" class="inline-block w-40 mr-6 text-right font-bold text-gray-600">Seleccionar Client:</label>
+            <select name="client_id" id="client_id" class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 text-gray-600 outline-none">
             <option value="">Seleccionar Client</option>
             @foreach($clients as $client)
               <option value="{{ $client->id }}">{{ $client->nom }} {{ $client->cognom }}</option>
             @endforeach
-          </select>
-        </div>
+            </select>
+          </div>
         @error('client_id')
         <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror

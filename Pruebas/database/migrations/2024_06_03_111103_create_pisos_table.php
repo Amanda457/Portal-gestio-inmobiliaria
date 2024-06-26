@@ -6,13 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('pis', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('pisos', function (Blueprint $table) {
+            $table->id();
             $table->string('nom_referencia');
             $table->enum('tipus', ['Pis', 'Casa']);
             $table->string('direccio');
@@ -29,11 +26,8 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('pis');
+        Schema::dropIfExists('pisos');
     }
 };

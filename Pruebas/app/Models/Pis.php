@@ -9,6 +9,7 @@ class Pis extends Model
 {
     use HasFactory;
 
+    protected $table = 'pisos';
     protected $fillable = [
         'nom_referencia',
         'tipus',
@@ -23,4 +24,9 @@ class Pis extends Model
         'ascensor',
         'estat'
     ];
+
+    public function reservas()
+  {
+    return $this->hasMany(Reserva::class);
+  }
 }

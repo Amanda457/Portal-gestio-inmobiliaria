@@ -6,9 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreReservaRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
@@ -22,6 +19,8 @@ class StoreReservaRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'client_id' => 'required',
+            'pis_id' => 'required',
             'estat' => ['required', 'string', 'in:Per revisar, Aprovada, Rebutjada'],
         ];
     }

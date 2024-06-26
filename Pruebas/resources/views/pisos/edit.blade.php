@@ -3,7 +3,7 @@
         Editar pis
       </x-slot>
 
-<div class="bg-green-100 py-32 px-10 min-h-screen">
+<div class="bg-green-100 py-28 px-10 min-h-screen">
     <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto shadow-xl">
       <div class="flex justify-center">
         <h1 class="text-2xl mb-8 text-gray-700 font-semibold ">Formulari edició de pisos</h1>
