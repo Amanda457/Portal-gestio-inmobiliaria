@@ -19,6 +19,8 @@ class StoreReservaRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'client_id' => 'required',
+            'pis_id' => 'required',
             'estat' => ['required', 'string', 'in:Per revisar, Aprovada, Rebutjada'],
         ];
     }
