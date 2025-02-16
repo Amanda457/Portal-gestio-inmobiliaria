@@ -1,3 +1,4 @@
+@props(['url', 'title'])
 <nav class="mx-8 mt-3 lg:px-16 px-6 bg-white shadow-md flex flex-wrap items-center lg:py-0 py-2">
     <div class="flex-1 flex justify-between items-center">
       <a href="/inici" class="flex text-lg font-semibold">
@@ -25,7 +26,7 @@
           
           <li class="py-2 lg:py-2 ">
            
-            <a href=" {{ $url }}">
+            <a href=" {{ $url }}" title="{{ $title }}">
              {{ svg('zondicon-add-solid', ['class' => 'w-6 h-6']) }}
             </a-> 
            

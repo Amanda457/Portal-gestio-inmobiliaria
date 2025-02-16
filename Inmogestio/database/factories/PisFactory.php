@@ -23,12 +23,12 @@ class PisFactory extends Factory
             'direccio' => $this->faker->address,
             'poblacio' => $this->faker->city,
             'm2' => $this->faker->numberBetween(30, 999),
-            'habitacions' => $this->faker->numberBetween(1, 12),
-            'lavabos' => $this->faker->numberBetween(1, 12),
-            'preu' => $this->faker->numberBetween(300, 2000),
+            'habitacions' => $this->faker->numberBetween(1, 6),
+            'lavabos' => $this->faker->numberBetween(1, 3),
+            'preu' => $this->faker->numberBetween(300, 2500),
             'tipus_cuina' => $this->faker->randomElement(['Americana', 'Oberta (sense barra/illa)', 'Independent']),
             'estat' => $this->faker->randomElement(['Per reformar', 'Per entrar a viure', 'Nou']),
-            'descripcio' => $this->faker->paragraph(3),
+            'descripcio' => $this->faker->paragraph(2),
             'ascensor' => $this->faker->boolean,
         ];
     }

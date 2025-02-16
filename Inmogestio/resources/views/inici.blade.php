@@ -2,10 +2,10 @@
     <x-slot name="title">
         Panel de gestió
     </x-slot>
-    <div class="relative py-16">  
+   <div class="min-h-screen bg-[url('{{ asset('img/bg_collage_main.png') }}')] bg-repeat bg-contain">
+   <div class="relative py-16 backdrop-blur-[1.5px] bg-white/50">  
         <div class="relative container m-auto px-6 text-gray-500 md:px-12 xl:px-40">
-            <div class="m-auto  bg-white md:w-8/12 lg:w-6/12 xl:w-6/12">
-                <div class="rounded-xl shadow-xl">
+            <div class="m-auto bg-white rounded-xl md:w-8/12 lg:w-6/12 xl:w-6/12">
                     <div class="p-6 sm:p-16">
                         <div class="text-center">
                         
@@ -39,7 +39,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+              
         </div>
+        <footer class="text-center text-gray-600 py-6">
+                
+            </footer>
+    </div>
     </div>
 </x-layout>

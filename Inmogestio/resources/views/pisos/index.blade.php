@@ -3,26 +3,34 @@
         Pisos
     </x-slot>
 
-    <x-nav url="{{ route('pisos.create') }}" />
+    <x-nav url="{{ route('pisos.create') }}" title="Crear inmoble" />
 
-    <div class="mx-8 mt-4 overflow-hidden shadow-md sm:rounded-lg">
+    <div class="mx-8 mt-4 relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-green-100 dark:bg-gray-700 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-green-100 dark:bg-gray-700 dark:text-gray-400">
+                @php
+                $headers = [
+                'ID',
+                'Nom',
+                'Tipus',
+                'Direcció',
+                'Població',
+                'M²',
+                'Habs',
+                'WC',
+                'Cuina',
+                'Descripció',
+                'Ascensor',
+                'Estat',
+                'Preu',
+                'Accions'
+                ];
+                @endphp
+
                 <tr>
-                    <th scope="col" class="px-2 py-1 text-center">ID</th>
-                    <th scope="col" class="px-2 py-1 text-center">Nom</th>
-                    <th scope="col" class="px-2 py-1 text-center">Tipus</th>
-                    <th scope="col" class="px-2 py-1 text-center">Direcció</th>
-                    <th scope="col" class="px-2 py-1 text-center">Població</th>
-                    <th scope="col" class="px-2 py-1 text-center">M2</th>
-                    <th scope="col" class="px-2 py-1 text-center">Habs</th>
-                    <th scope="col" class="px-2 py-1 text-center">WC</th>
-                    <th scope="col" class="px-2 py-1 text-center">Cuina</th>
-                    <th scope="col" class="px-2 py-1 text-center">Descripció</th>
-                    <th scope="col" class="px-2 py-1 text-center">Ascensor</th>
-                    <th scope="col" class="px-2 py-1 text-center">Estat</th>
-                    <th scope="col" class="px-2 py-1 text-center">Preu</th>
-                    <th scope="col" class="px-2 py-1 text-center">Accions</th>
+                    @foreach ($headers as $header)
+                    <th scope="col" class="px-2 py-1 text-center">{{ $header }}</th>
+                    @endforeach
                 </tr>
             </thead>
             <tbody>
@@ -42,13 +50,13 @@
                     <td class="px-2 py-1 text-center">{{ $pis->estat }}</td>
                     <td class="px-2 py-1 text-center">{{ $pis->preu }}</td>
                     <td class="px-2 py-1 text-right">
-                        <div class="flex space-x-2"> 
-                        <a href="{{ route('pisos.edit', $pis->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
-                        <form action="{{ route('pisos.destroy', $pis->id) }}" method="POST" class="inline" onsubmit="return confirm('Estàs segur que vols eliminar aquest pis?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Eliminar</button>
-                        </form>
+                        <div class="flex space-x-2">
+                            <a href="{{ route('pisos.edit', $pis->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                            <form action="{{ route('pisos.destroy', $pis->id) }}" method="POST" class="inline" onsubmit="return confirm('Estàs segur que vols eliminar aquest pis?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-2">Eliminar</button>
+                            </form>
                         </div>
                     </td>
                 </tr>
@@ -57,3 +65,12 @@
         </table>
     </div>
 </x-layout>
+<script>
+    $(document).ready( function () {
+    $('#pisosTable').DataTable({
+        info: false,
+        lenghtChange: false,
+
+    });
+});
+</script>

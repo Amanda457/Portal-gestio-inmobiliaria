@@ -30,7 +30,7 @@ class UpdatePisRequest extends FormRequest
             'preu' => 'required|integer|between:300,2000',
             'tipus_cuina' => ['required', 'string', 'in:Americana,Oberta (sense barra/illa),Independent'],
             'estat' => ['required', 'string', 'in:Per reformar,Per entrar a viure,Nou'],
-            'descripcio' => 'required|string|min:40',
+            'descripcio' => 'required|string|min:20|max:40',
             'ascensor' => 'required|boolean',
         ];
     }
