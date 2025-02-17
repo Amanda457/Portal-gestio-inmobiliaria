@@ -65,12 +65,3 @@
         </table>
     </div>
 </x-layout>
-<script>
-    $(document).ready( function () {
-    $('#pisosTable').DataTable({
-        info: false,
-        lenghtChange: false,
-
-    });
-});
-</script>
